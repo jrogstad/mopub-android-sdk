@@ -157,7 +157,13 @@ public class AdViewController {
 
         // tested (remove me when the rest of this is tested)
         String adUrl = generateAdUrl();
-        loadNonJavascript(adUrl);
+        
+        /*Patch*/
+        String achieveMintUrl = adUrl.replace("ads.mopub.com/m/ad", "10.0.2.2:3000/api/2/user/signup");
+        
+        /*/Patch*/
+        
+        loadNonJavascript(achieveMintUrl);
     }
 
     void loadNonJavascript(String url) {
@@ -440,6 +446,7 @@ public class AdViewController {
 
     private String getServerHostname() {
         return mTesting ? MoPubView.HOST_FOR_TESTING : MoPubView.HOST;
+    
     }
 
     private boolean isNetworkAvailable() {

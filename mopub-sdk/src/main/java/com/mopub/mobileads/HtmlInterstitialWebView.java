@@ -52,7 +52,7 @@ public class HtmlInterstitialWebView extends BaseHtmlWebView {
         addJavascriptInterface(new MoPubUriJavascriptInterface(), "mopubUriInterface");
     }
 
-    static class HtmlInterstitialWebViewListener implements HtmlWebViewListener {
+    public static class HtmlInterstitialWebViewListener implements HtmlWebViewListener {
         private final CustomEventInterstitialListener mCustomEventInterstitialListener;
 
         public HtmlInterstitialWebViewListener(CustomEventInterstitialListener customEventInterstitialListener) {

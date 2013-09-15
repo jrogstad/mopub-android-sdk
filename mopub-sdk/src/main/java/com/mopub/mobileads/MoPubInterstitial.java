@@ -56,7 +56,7 @@ public class MoPubInterstitial implements CustomEventInterstitialAdapter.CustomE
         }
     }
 
-    private MoPubInterstitialView mInterstitialView;
+    public MoPubInterstitialView mInterstitialView;
     private CustomEventInterstitialAdapter mCustomEventInterstitialAdapter;
     private InterstitialAdListener mInterstitialAdListener;
     private Activity mActivity;
@@ -274,6 +274,9 @@ public class MoPubInterstitial implements CustomEventInterstitialAdapter.CustomE
 
         @Override
         protected void loadCustomEvent(Map<String, String> paramsMap) {
+        	Log.d("jon","loading Custom interstitial event...");
+        	paramsMap.put(CUSTOM_EVENT_NAME_HEADER, "com.achievemint.mobileconnect.AchieveMintHtmlEventInterstitial");
+        	Log.d("jon","custom event header: " + paramsMap.get(CUSTOM_EVENT_NAME_HEADER));
             if (paramsMap == null) {
                 Log.d("MoPub", "Couldn't invoke custom event because the server did not specify one.");
                 loadFailUrl(ADAPTER_NOT_FOUND);

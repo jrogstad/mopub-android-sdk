@@ -87,7 +87,7 @@ public class MoPubActivity extends BaseInterstitialActivity {
         super.onDestroy();
     }
 
-    private class BroadcastingInterstitialListener implements CustomEventInterstitialListener {
+    public class BroadcastingInterstitialListener implements CustomEventInterstitialListener {
         @Override
         public void onInterstitialLoaded() {
         }

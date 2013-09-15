@@ -15,14 +15,14 @@ import java.util.List;
 
 import static com.mopub.mobileads.MoPubErrorCode.UNSPECIFIED;
 
-class HtmlWebViewClient extends WebViewClient {
+public class HtmlWebViewClient extends WebViewClient {
     private final Context mContext;
     private HtmlWebViewListener mHtmlWebViewListener;
     private BaseHtmlWebView mHtmlWebView;
     private final String mClickthroughUrl;
     private final String mRedirectUrl;
 
-    HtmlWebViewClient(HtmlWebViewListener htmlWebViewListener, BaseHtmlWebView htmlWebView, String clickthrough, String redirect) {
+    public HtmlWebViewClient(HtmlWebViewListener htmlWebViewListener, BaseHtmlWebView htmlWebView, String clickthrough, String redirect) {
         mHtmlWebViewListener = htmlWebViewListener;
         mHtmlWebView = htmlWebView;
         mClickthroughUrl = clickthrough;

@@ -51,6 +51,9 @@ public abstract class BaseInterstitialActivity extends Activity {
         setContentView(mLayout);
 
         createInterstitialCloseButton();
+        
+        /*Patch - Hide the close button, AchieveMint has own button*/
+        hideInterstitialCloseButton();
     }
 
     @Override

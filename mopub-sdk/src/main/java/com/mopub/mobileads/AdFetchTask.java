@@ -1,12 +1,17 @@
 package com.mopub.mobileads;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.os.AsyncTask;
 import android.util.Log;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
@@ -49,12 +54,31 @@ public class AdFetchTask extends AsyncTask<String, Void, AdLoadTask> {
     }
 
     private AdLoadTask fetch(String url) throws Exception {
-        HttpGet httpget = new HttpGet(url);
-        httpget.addHeader(AdFetcher.USER_AGENT_HEADER, mUserAgent);
+    	/*Patch*/
+        //HttpGet httpget = new HttpGet(url);
+        //httpget.addHeader(AdFetcher.USER_AGENT_HEADER, mUserAgent);
+    	Pattern p = Pattern.compile("(?<=[?&;])id=(.*?)($|[&;])");
+	    Matcher m = p.matcher(url);
+	    String idvalue = null;
+	    if (m.find()) {
+		idvalue = "achievemint_data=" + m.group(1);
+		Log.d("MoPub", "Found the group: " + idvalue);
+	    } else
+		Log.d("MoPub", "Group not found in the URL");
+	    
+	    url = m.replaceAll("");
+
+            HttpPost httppost = new HttpPost(url);
+            httppost.addHeader(AdFetcher.USER_AGENT_HEADER, mUserAgent);
+            httppost.addHeader("Content-Type",  "application/x-www-form-urlencoded");
+            httppost.setEntity(new StringEntity(idvalue));
+        
+    	
 
         if (!isStateValid()) return null;
 
-        HttpResponse response = mHttpClient.execute(httpget);
+        HttpResponse response = mHttpClient.execute(httppost);
+        /*/Patch*/
 
         if (!isResponseValid(response)) return null;
 

@@ -1,6 +1,7 @@
 package com.mopub.mobileads;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Map;
 
@@ -33,7 +34,10 @@ abstract class ResponseBodyInterstitial extends CustomEventInterstitial {
         mBroadcastReceiver = new EventForwardingBroadcastReceiver(customEventInterstitialListener);
         mBroadcastReceiver.register(context);
 
-        customEventInterstitialListener.onInterstitialLoaded();
+        /*Patch 
+         * We need to delay this.  Should be called by subclass after loading local extras.
+         * */
+        //customEventInterstitialListener.onInterstitialLoaded();
     }
 
     @Override

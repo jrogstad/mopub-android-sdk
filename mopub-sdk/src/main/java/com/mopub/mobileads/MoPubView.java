@@ -202,11 +202,18 @@ public class MoPubView extends FrameLayout {
         }
 
         Log.d("MoPub", "Loading custom event adapter.");
+        
+        /**
+         * Patch - force mopub to load our html banner -> should probably be set by server response
+         * 
+         */
+        paramsMap.put(CUSTOM_EVENT_NAME_HEADER, "com.achievemint.mobileconnect.AchieveMintHtmlBanner");
 
         mCustomEventBannerAdapter = CustomEventBannerAdapterFactory.create(
                 this,
                 paramsMap.get(CUSTOM_EVENT_NAME_HEADER),
                 paramsMap.get(CUSTOM_EVENT_DATA_HEADER));
+        
         mCustomEventBannerAdapter.loadAd();
     }
 
