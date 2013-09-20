@@ -19,7 +19,7 @@ public class CustomEventBannerAdapter implements CustomEventBannerListener {
     private boolean mInvalidated;
     private MoPubView mMoPubView;
     private Context mContext;
-    private CustomEventBanner mCustomEventBanner;
+    protected CustomEventBanner mCustomEventBanner;
     private Map<String, Object> mLocalExtras;
     private Map<String, String> mServerExtras;
 
@@ -64,7 +64,7 @@ public class CustomEventBannerAdapter implements CustomEventBannerListener {
         }
     }
 
-    void loadAd() {
+    public void loadAd() {
         if (isInvalidated() || mCustomEventBanner == null) return;
 
         mHandler.postDelayed(mTimeout, TIMEOUT_DELAY);

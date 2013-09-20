@@ -67,9 +67,10 @@ public class MoPubView extends FrameLayout {
         LOCATION_AWARENESS_NORMAL, LOCATION_AWARENESS_TRUNCATED, LOCATION_AWARENESS_DISABLED
     }
 
-    public static final String HOST = "ads.mopub.com";
+    /*Patch - Allow HOST and AD_HANDLER to be overriden by subclass*/
+    public static String HOST = "ads.mopub.com";
     public static final String HOST_FOR_TESTING = "testing.ads.mopub.com";
-    public static final String AD_HANDLER = "/m/ad";
+    public static String AD_HANDLER = "/m/ad";
     public static final int DEFAULT_LOCATION_PRECISION = 6;
 
     protected AdViewController mAdViewController;
@@ -202,12 +203,8 @@ public class MoPubView extends FrameLayout {
         }
 
         Log.d("MoPub", "Loading custom event adapter.");
-        
-        /**
-         * Patch - force mopub to load our html banner -> should probably be set by server response
-         * 
-         */
-        paramsMap.put(CUSTOM_EVENT_NAME_HEADER, "com.achievemint.mobileconnect.AchieveMintHtmlBanner");
+                
+        paramsMap.put(CUSTOM_EVENT_NAME_HEADER, paramsMap.get(CUSTOM_EVENT_NAME_HEADER));
 
         mCustomEventBannerAdapter = CustomEventBannerAdapterFactory.create(
                 this,

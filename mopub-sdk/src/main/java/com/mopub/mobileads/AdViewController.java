@@ -157,13 +157,12 @@ public class AdViewController {
 
         // tested (remove me when the rest of this is tested)
         String adUrl = generateAdUrl();
-        
-        /*Patch*/
-        String achieveMintUrl = adUrl.replace("ads.mopub.com/m/ad", "10.0.2.2:3000/api/2/user/signup");
-        
-        /*/Patch*/
-        
-        loadNonJavascript(achieveMintUrl);
+        /*Patch - Remove first http added by urlGenerator... Achievemint hostname already 
+         * includes and could be https or http, where as urlGenerator always http
+         * */
+        String modifiedUrl = adUrl.replaceFirst("http://", "");
+                Log.d("jon","url: " + modifiedUrl);
+        loadNonJavascript(modifiedUrl);
     }
 
     void loadNonJavascript(String url) {

@@ -17,7 +17,7 @@ public class HtmlBannerWebView extends BaseHtmlWebView {
         setWebViewClient(new HtmlWebViewClient(new HtmlBannerWebViewListener(customEventBannerListener), this, clickthroughUrl, redirectUrl));
     }
 
-    static class HtmlBannerWebViewListener implements HtmlWebViewListener {
+    public static class HtmlBannerWebViewListener implements HtmlWebViewListener {
         private final CustomEventBannerListener mCustomEventBannerListener;
 
         public HtmlBannerWebViewListener(CustomEventBannerListener customEventBannerListener) {
