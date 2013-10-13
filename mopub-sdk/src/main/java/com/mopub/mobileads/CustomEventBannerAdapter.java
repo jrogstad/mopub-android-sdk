@@ -102,6 +102,7 @@ public class CustomEventBannerAdapter implements CustomEventBannerListener {
             if (!(bannerView instanceof HtmlBannerWebView)) {
                 mMoPubView.trackNativeImpression();
             }
+            
         }
     }
 

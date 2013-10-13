@@ -161,7 +161,6 @@ public class AdViewController {
          * includes and could be https or http, where as urlGenerator always http
          * */
         String modifiedUrl = adUrl.replaceFirst("http://", "");
-                Log.d("jon","url: " + modifiedUrl);
         loadNonJavascript(modifiedUrl);
     }
 
