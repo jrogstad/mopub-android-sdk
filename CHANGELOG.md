@@ -11,15 +11,37 @@ Includes support for ads in the MRAID 2.0 format. MRAID 2.0 allows advertisers t
 To correctly display ads that ask the user to save a picture (storePicture ads), you need to make the following change to AndroidManifest.xml:  
 * Add the`WRITE_EXTERNAL_STORAGE` permission. Note: **Adding the permission is optional**. If the permission is not added, we will not deliver any store picture ads to the users' devices. All other features will remain functional without the new permission. 
 
-To allow users to play videos using the native video player:
-* Declare activity `com.mopub.mobileads.MraidVideoPlayerActivity` This activity is required to support playing videos in the native player and we strongly recommend adding it.
+To allow users to play videos using the native video player:  
+* Declare activity `com.mopub.mobileads.MraidVideoPlayerActivity`. This activity is required to support playing videos in the native player and we strongly recommend adding it.
+ 
+### Version 1.15.2 (Sep 11, 2013) 
+  - Allowed Facebook Support to be disabled optionally with `setFacebookSupported(false)`: 
+  	- Use `MoPubInterstitial.setFacebookSupported(false);` for interstitials 
+  	- Use `MoPubView.setFacebookSupported(false);` for banners 
+  	- Note: the `setFacebookSupported(false)` method call must come __before__ `loadAd()` 
+  	- Note: facebook support is on by default 
+  - Changed banner refresh default to be 60 seconds when requests timed out  
+  - Fixed edge case in Millennial Media ad fetch failure when there is no inventory; fixes [GitHub issue #18](https://github.com/mopub/mopub-android-sdk/issues/18)
+  - Fixed a bug where redirect URLs were malformed, causing the native browser to not render ads    
+  - Updated Millennial Media jar to 5.1.0
+  - Updated Greystripe custom event support to 2.3.0
+  - Fixed MRAID 2.0 `storePicture` command's messaging when a picture either fails to download or fails to save to device 
+  - Expanded MRAID 2.0 `createCalendarEvent` command to support both minute- and second-level granularity  
+
+###### Version 1.15.2.1 (Sep 13, 2013)
+  - Made the SDK more resilient to creatives that improperly use the `mopubnativebrowser://` scheme; fixes [GitHub issue #36](https://github.com/mopub/mopub-android-sdk/issues/36)
+   
+###### Version 1.15.2.2 (Sep 20, 2013)
+  - Removed `WebSettings.setPluginsEnabled()` so the SDK builds against Android API 18; fixes [GitHub issue #28](https://github.com/mopub/mopub-android-sdk/issues/28)
+  - AdMob banners are now removed from the view hierarchy before they are destroyed; fixes the reopened [GitHub issue #23](https://github.com/mopub/mopub-android-sdk/issues/23)
+  - Prevent ads from launching system features, such as a browser view, until the user has interacted with the ad
  
 ### Version 1.15.1 (Aug 27, 2013)
-  - Updated documentation to remove the requirement for certain AndroidManifest permissions.
-  - Fixed minor bug with mraid 2.0 `storePicture` command where the user sees a false download completed message.
+  - Updated documentation to remove the requirement for certain AndroidManifest permissions
+  - Fixed minor bug with MRAID 2.0 `storePicture` command where the user sees a false download completed message
   
-### Version 1.15.1.1 (Sep 4, 2013)
-  - Made the SDK more resilient to unexpected Flash creatives.
+###### Version 1.15.1.1 (Sep 4, 2013)
+  - Made the SDK more resilient to unexpected Flash creatives
 
 ## Version 1.14 (May 28, 2013)
 
@@ -47,13 +69,13 @@ To allow users to play videos using the native video player:
 ### Version 1.13.1 (May 21, 2013)
   - Updated Millennial support to Millennial Media SDK version 5.0.1
 
-### Version 1.13.0.1 (May 15, 2013)
+###### Version 1.13.0.1 (May 15, 2013)
 
   - Removed extraneous display call in `MillennialInterstitial` custom event
   - Fixed potential NPE in `AdView`'s loadUrl()
   - Deprecated `HTML5AdView` after fixing some compilation issues
   
-### Version 1.13.0.2 (May 17, 2013)
+###### Version 1.13.0.2 (May 17, 2013)
 
   - Relaxed access modifiers for `CustomEventBanner` and `CustomEventInterstitial`
 

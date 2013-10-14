@@ -64,11 +64,14 @@ public class CustomEventBannerAdapter implements CustomEventBannerListener {
         }
     }
 
+
     public void loadAd() {
         if (isInvalidated() || mCustomEventBanner == null) return;
 
         mHandler.postDelayed(mTimeout, TIMEOUT_DELAY);
+
         mCustomEventBanner.loadBanner(mContext, this, mLocalExtras, mServerExtras);
+
     }
 
     void invalidate() {
@@ -87,6 +90,8 @@ public class CustomEventBannerAdapter implements CustomEventBannerListener {
     private void cancelTimeout() {
         mHandler.removeCallbacks(mTimeout);
     }
+
+
 
     /*
      * CustomEventBanner.Listener implementation

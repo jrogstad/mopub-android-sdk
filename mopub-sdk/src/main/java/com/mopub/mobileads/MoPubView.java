@@ -119,7 +119,8 @@ public class MoPubView extends FrameLayout {
             return;
         }
 
-        mAdViewController = AdViewControllerFactory.create(context, this);
+        mAdViewController = AdViewControllerFactory.
+                create(context, this);
         registerScreenStateBroadcastReceiver();
     }
 
@@ -185,6 +186,10 @@ public class MoPubView extends FrameLayout {
             mCustomEventBannerAdapter.invalidate();
             mCustomEventBannerAdapter = null;
         }
+    }
+
+    Integer getAdTimeoutDelay() {
+        return (mAdViewController != null) ? mAdViewController.getAdTimeoutDelay() : null;
     }
 
     protected void loadFailUrl(MoPubErrorCode errorCode) {
@@ -303,6 +308,14 @@ public class MoPubView extends FrameLayout {
 
     public String getKeywords() {
         return (mAdViewController != null) ? mAdViewController.getKeywords() : null;
+    }
+
+    public void setFacebookSupported(boolean enabled) {
+        if (mAdViewController != null) mAdViewController.setFacebookSupported(enabled);
+    }
+
+    public boolean isFacebookSupported() {
+        return (mAdViewController != null) ? mAdViewController.isFacebookSupported() : false;
     }
 
     public void setLocation(Location location) {
