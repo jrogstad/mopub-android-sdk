@@ -32,12 +32,10 @@ public class HtmlWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (handleSpecialMoPubScheme(url) || handlePhoneScheme(url) || handleNativeBrowserScheme(url)) {
-        	Log.d("jon","here1");
             return true;
         }
 
         if (isApplicationUrl(url) && !canHandleApplicationUrl(url)) {
-        	Log.d("jon","here2");
             return true;
         }
 

@@ -306,7 +306,6 @@ public class AdViewController {
         if (mIsDestroyed) {
             return;
         }
-
         setAutorefreshEnabled(false);
         cancelRefreshTimer();
 
