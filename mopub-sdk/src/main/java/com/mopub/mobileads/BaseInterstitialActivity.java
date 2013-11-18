@@ -38,7 +38,7 @@ public abstract class BaseInterstitialActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mButtonSize = Dips.asIntPixels(CLOSE_BUTTON_SIZE, this);
         mButtonPadding = Dips.asIntPixels(CLOSE_BUTTON_PADDING, this);
