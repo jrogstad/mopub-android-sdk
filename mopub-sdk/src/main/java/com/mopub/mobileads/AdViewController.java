@@ -478,7 +478,7 @@ public class AdViewController {
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    void setAdContentView(final View view) {
+    public void setAdContentView(final View view) {
         // XXX: This method is called from the WebViewClient's callbacks, which has caused an error on a small portion of devices
         // We suspect that the code below may somehow be running on the wrong UI Thread in the rare case.
         // see: http://stackoverflow.com/questions/10426120/android-got-calledfromwrongthreadexception-in-onpostexecute-how-could-it-be

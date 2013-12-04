@@ -73,7 +73,7 @@ public class MoPubView extends FrameLayout {
     public static String AD_HANDLER = "/m/ad";
     public static final int DEFAULT_LOCATION_PRECISION = 6;
 
-    protected AdViewController mAdViewController;
+    public AdViewController mAdViewController;
     protected CustomEventBannerAdapter mCustomEventBannerAdapter;
 
     private Context mContext;
